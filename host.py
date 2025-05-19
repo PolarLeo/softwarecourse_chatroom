@@ -37,7 +37,7 @@ def handle_client(conn, addr):
 
 def broadcast(message, sender_conn):
     for client in clients:
-        if client != sender_conn:
+        if True:  # client != sender_conn:
             try:
                 client.sendall(message.encode("utf-8"))
             except:

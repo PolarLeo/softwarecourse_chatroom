@@ -1,6 +1,7 @@
 # client.py
 import socket
 import threading
+import sys
 
 HOST = "localhost"
 PORT = 50010
@@ -29,7 +30,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client:
 
     try:
         while True:
-            msg = input(username)
+            msg = input()
+            sys.stdout.write("\033[F")
+            # Move cursor up one line, this is so you dont see your message twice
+            sys.stdout.write("\r\033[K")  # Return to start, clear line
+            sys.stdout.flush()
             if msg.lower() == "/quit":
                 break
             client.sendall(msg.encode("utf-8"))
