@@ -3,7 +3,7 @@ import socket
 import threading
 import sys
 
-HOST = "localhost"
+HOST = "0.0.0.0"
 PORT = 50010
 
 
@@ -12,7 +12,7 @@ def receive_messages(sock):
         try:
             message = sock.recv(1024).decode("utf-8")
             if message:
-                print(message)
+                print(f'\n{message}')
         except:
             print("[ERROR] Lost connection to server.")
             break
